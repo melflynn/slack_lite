@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {configureStore} from './store/store';
 import Root from './components/root';
+import { configureStore } from './store/store';
+import { login, receiveCurrentUser } from './actions/session_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  // store = configureStore();
+  const store = configureStore();
 
-  ReactDOM.render(<h1>Welcome to Slack-Lite</h1>, root);
+  window.store = store;
+  window.login = login;
+  window.receiveCurrentUser = receiveCurrentUser;
+
+  ReactDOM.render(<Root store={store}/>, root);
 })
