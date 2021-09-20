@@ -6,7 +6,7 @@ import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  store = configureStore();
+  // store = configureStore();
 
-  ReactDOM.render(<Root store={store}/>, root);
+  ReactDOM.render(<h1>Welcome to Slack-Lite</h1>, root);
 })

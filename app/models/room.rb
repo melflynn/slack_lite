@@ -7,4 +7,7 @@
 #  updated_at :datetime         not null
 #
 class Room < ApplicationRecord
+
+  has_many :messages
+  
 end
