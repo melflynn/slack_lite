@@ -23,6 +23,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :messages
+  has_many :rooms
 
   def generate_session_token
     SecureRandom::urlsafe_base64
