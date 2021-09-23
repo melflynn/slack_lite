@@ -1,9 +1,8 @@
 # == Schema Information
 #
-# Table name: messages
+# Table name: api_room_users
 #
 #  id         :bigint           not null, primary key
-#  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  room_id    :integer          not null
@@ -11,13 +10,13 @@
 #
 # Indexes
 #
-#  index_messages_on_room_id  (room_id)
-#  index_messages_on_user_id  (user_id)
+#  index_api_room_users_on_room_id  (room_id)
+#  index_api_room_users_on_user_id  (user_id)
 #
-class Message < ApplicationRecord
-  validates :content, presence: true
+require 'test_helper'
 
-  belongs_to :user
-  belongs_to :room
-
+class Api::RoomUserTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

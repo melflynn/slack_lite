@@ -23,7 +23,15 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :messages
-  has_many :rooms
+  has_many :room_users
+
+  has_many :owned_rooms,
+    foreign_key: :owner_id,
+    class_name: :Room
+
+  has_many :rooms,
+    through: :room_users,
+    source: :room
 
   def generate_session_token
     SecureRandom::urlsafe_base64

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:index]
     end
     resources :messages, only: [:show, :create, :destroy, :update]
-    
+    resources :room_users, only: [:create, :destroy]
   end
 
   resource :session, only: [:create, :destroy]
