@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
 
 
   def create
-    user = User.find_by_credentials(params[:user][:username], params[:user][:password])
-    if user
-      login(user)
-      render json: user
+    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    if @user
+      login(@user)
+      render '/api/users/show'
     else
-      render json: user, status: 422
+      render json: @user, status: 422
     end
   end
 
