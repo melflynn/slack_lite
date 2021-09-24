@@ -8,6 +8,6 @@ export const receiveRooms = (rooms) => ({
 })
 
 export const fetchRoomsForUser = (userId) => dispatch => (
-  RoomAPIUtil.fetchRoomsForUser()
+  RoomAPIUtil.fetchRoomsForUser(userId)
     .then(rooms => dispatch(receiveRooms(rooms)))
 );

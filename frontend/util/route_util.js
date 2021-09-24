@@ -11,7 +11,7 @@ const LoginAuth = ({component: Component, path, loggedIn, exact}) => (
 )
 
 const mapStateToProps = (state) => ({
-  loggedIn: Boolean(state.session.currentUserId)
+  loggedIn: Boolean(state.session.currentUser)
 })
 
 export const LogoutAuthRoute = withRouter(connect(mapStateToProps, null)(LogoutAuth));

@@ -4,11 +4,12 @@ import { LoginAuthRoute, LogoutAuthRoute } from '../util/route_util';
 import HomePage from './home_page';
 import SignupContainer from './session_forms/signup_container';
 import LoginContainer from './session_forms/login_container';
+import RoomsContainer from './rooms/rooms_container';
 
 const App = () => (
   <div>
     <Switch>
-      {/* <LoginAuthRoute path="/rooms" component={RoomsComponent} /> */}
+      <LoginAuthRoute path="/rooms" component={RoomsContainer} />
       <LogoutAuthRoute path="/signup" component={SignupContainer} />
       <LogoutAuthRoute path="/login" component={LoginContainer} />
       <LogoutAuthRoute path="/" component={HomePage} />
