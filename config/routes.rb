@@ -8,9 +8,9 @@ Rails.application.routes.draw do
       resources :rooms, only: [:index]
     end
     resources :rooms, only: [:index, :create, :destroy] do 
-      resources :messages, only: [:index]
+      resources :messages, only: [:index, :create]
     end
-    resources :messages, only: [:show, :create, :destroy, :update]
+    resources :messages, only: [:show, :destroy, :update]
     resources :room_users, only: [:create, :destroy]
   end
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const RoomsIndex = (props) => {
   
@@ -9,7 +10,7 @@ const RoomsIndex = (props) => {
   return <div>
     <ul>
       {props.rooms.map((room, i) => (
-        <li key={i}>{room.name}</li>
+        <Link to={`/rooms/${room.id}`}key={i}>{room.name}</Link>
       ))}
     </ul>
   </div>
