@@ -13,7 +13,7 @@ export const fetchMessage = (messageId) => (
   })
 )
 
-export const createMessasge = (roomId, message) => (
+export const createMessage = (roomId, message) => (
   $.ajax({
     method: 'POST',
     url: `/api/rooms/${roomId}/messages`,
