@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import { configureStore } from './store/store';
-import { login, receiveCurrentUser } from './actions/session_actions';
-import { receiveRooms, fetchRoomsForUser } from './actions/room_actions';
+import * as MessageUtil from './util/message_util';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,10 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.store = store;
-  window.login = login;
-  window.receiveCurrentUser = receiveCurrentUser;
-  window.fetchRoomsForUser = fetchRoomsForUser;
-  window.receiveRooms = receiveRooms;
+  window.messageUtil = MessageUtil;
 
   ReactDOM.render(<Root store={store}/>, root);
 })
