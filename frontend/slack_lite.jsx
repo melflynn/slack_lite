@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   
   let store; 
+  console.log(window.currentUser);
 
   if (window.currentUser) {
     const preloadedState = {
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       },
       session: {
-        "currentUserId": window.currentUser.id
+        "currentUser": window.currentUser.id
       }
     }
 
@@ -34,6 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.receiveCurrentUser = receiveCurrentUser;
   window.fetchRoomsForUser = fetchRoomsForUser;
   window.receiveRooms = receiveRooms;
-  
+
   ReactDOM.render(<Root store={store}/>, root);
 })
