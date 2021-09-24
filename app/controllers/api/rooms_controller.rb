@@ -1,5 +1,15 @@
 class Api::RoomsController < ApplicationController
 
+  def index 
+    if params[:user_id]
+      @rooms = User.find_by(id: params[:user_id]).rooms
+    else
+      @rooms = Room.all
+    end
+
+    render :index
+  end
+
   def create
     @room = Room.new({name: params[:room][:name]})
     @room.owner_id = current_user.id

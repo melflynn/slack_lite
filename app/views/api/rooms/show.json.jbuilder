@@ -1,1 +1,1 @@
-json.extract! @room, :id, :name, :owner_id
+json.partial! '/api/rooms/room', room: @room

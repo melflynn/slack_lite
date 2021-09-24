@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import { configureStore } from './store/store';
 import { login, receiveCurrentUser } from './actions/session_actions';
+import { fetchRoomsForUser } from './util/rooms_util';
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   
+  let store; 
+
   if (window.currentUser) {
     const preloadedState = {
       entities: {
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store;
   window.login = login;
   window.receiveCurrentUser = receiveCurrentUser;
+  window.fetchRoomsForUser = fetchRoomsForUser;
 
   ReactDOM.render(<Root store={store}/>, root);
 })
