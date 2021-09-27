@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 const RoomsIndex = (props) => {
   
   useEffect(() => {
-    props.fetchRoomsForUser(props.currentUserId)
+    props.fetchUser(props.currentUserId)
+      .then(user => props.fetchRooms(user.rooms))
   }, []);
 
   return <div>
     <ul>
       {props.rooms.map((room, i) => (
-        <Link to={`/rooms/${room.id}`}key={i}>{room.name}</Link>
+        <li key={i}>
+          <Link to={`/rooms/${room.id}`}>{room.name}</Link>
+        </li>
       ))}
     </ul>
   </div>

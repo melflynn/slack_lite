@@ -6,7 +6,8 @@ const Room = (props) => {
 
   useEffect(() => {
     props.fetchMessagesForRoom(props.match.params.roomId);
-    props.fetchRoom(props.match.params.roomId);
+    props.fetchRoom(props.match.params.roomId)
+      .then(room => props.fetchUsers(room.users));
   }, []);
 
   if (props.room && props.messages) {

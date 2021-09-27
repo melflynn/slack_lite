@@ -3,6 +3,8 @@ class Api::RoomsController < ApplicationController
   def index 
     if params[:user_id]
       @rooms = User.find_by(id: params[:user_id]).rooms
+    elsif params[:roomIds]
+      @rooms = Room.find(params[:roomIds])
     else
       @rooms = Room.all
     end
