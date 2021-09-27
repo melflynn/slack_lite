@@ -5,3 +5,10 @@ export const fetchRoomsForUser = (userId) => (
     url: `/api/users/${userId}/rooms`
   })
 )
+
+export const fetchRoom = (roomId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/rooms/${roomId}`
+  })
+)

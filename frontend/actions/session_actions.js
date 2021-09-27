@@ -13,10 +13,8 @@ export const logoutCurrentUser = () => ({
 })
 
 export const login = (user) => (dispatch) => {
-  console.log(user);
   return sessionUtil.login(user)
   .then(user => {
-    console.log(user);
     return dispatch(receiveCurrentUser(user))
   })
 }

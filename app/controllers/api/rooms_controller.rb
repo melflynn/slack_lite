@@ -10,6 +10,11 @@ class Api::RoomsController < ApplicationController
     render :index
   end
 
+  def show
+    @room = Room.find_by(id: params[:id])
+    render :show
+  end
+
   def create
     @room = Room.new({name: params[:room][:name]})
     @room.owner_id = current_user.id
