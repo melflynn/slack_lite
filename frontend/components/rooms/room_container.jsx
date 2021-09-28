@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Room from './room';
 import { fetchRoom } from '../../actions/room_actions';
-import { createMessage, fetchMessagesForRoom } from '../../actions/message_actions';
+import { fetchMessagesForRoom } from '../../actions/message_actions';
+import { createMessage } from '../../util/message_util';
 import { fetchUsers, fetchUsersForRoom } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,7 +16,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchMessagesForRoom: (roomId) => dispatch(fetchMessagesForRoom(roomId)),
   fetchRoom: (roomId) => dispatch(fetchRoom(roomId)),
-  createMessage: (roomId, message) => dispatch(createMessage(roomId, message)),
   fetchUsers: (userIds) => dispatch(fetchUsers(userIds))
 })
 
