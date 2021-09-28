@@ -14,3 +14,10 @@ export const signup = (user) => (
     data: { user }
   })
 )
+
+export const logout = () => (
+  $.ajax({
+    method: 'DELETE',
+    url: '/session'
+  })
+)
