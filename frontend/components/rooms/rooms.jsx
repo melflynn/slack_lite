@@ -9,6 +9,9 @@ const RoomsIndex = (props) => {
   }, []);
 
   return <div>
+    <nav>
+      <button onClick={props.logout}>Logout</button>
+    </nav>
     <ul>
       {props.rooms.map((room, i) => (
         <li key={i}>

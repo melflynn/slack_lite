@@ -34,6 +34,10 @@ const Room = (props) => {
     // console.log(messages);
     return (
       <div>
+        <nav>
+          <button onClick={props.logout}>Logout</button>
+        </nav>
+        
         <h2>{props.room.name}</h2>
   
         <ul>
