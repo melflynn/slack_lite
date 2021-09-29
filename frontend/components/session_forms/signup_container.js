@@ -4,7 +4,7 @@ import { signup } from '../../actions/session_actions';
 
 const mapDispatchToProps = (dispatch) => ({
   sessionAction: (user) => dispatch(signup(user)),
-  sessionCommand: "Sign up!"
+  sessionCommand: "SIGN UP"
 });
 
 export default connect(null, mapDispatchToProps)(SessionForm);

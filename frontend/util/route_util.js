@@ -3,7 +3,7 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const LogoutAuth = ({component: Component, path, loggedIn, exact}) => (
-  <Route path={path} exact={exact} render={props => !loggedIn ? <Component {...props} /> : <Redirect to="/rooms" />} />
+  <Route path={path} exact={exact} render={props => !loggedIn ? <Component {...props} /> : <Redirect to="/main" />} />
 )
 
 const LoginAuth = ({component: Component, path, loggedIn, exact}) => (

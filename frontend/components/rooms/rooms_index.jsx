@@ -9,13 +9,10 @@ const RoomsIndex = (props) => {
   }, []);
 
   return <div>
-    <nav>
-      <button onClick={props.logout}>Logout</button>
-    </nav>
     <ul>
       {props.rooms.map((room, i) => (
         <li key={i}>
-          <Link to={`/rooms/${room.id}`}>{room.name}</Link>
+          <button onClick={() => props.updateRoom(room)}>{room.name}</button>
         </li>
       ))}
     </ul>

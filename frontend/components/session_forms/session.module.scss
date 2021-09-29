@@ -1,0 +1,70 @@
+
+
+.box {
+  border: .75rem solid #744074;
+  border-radius: 0.8rem;
+  background-color: white;
+  max-width: 80rem;
+  margin: auto;
+  margin-top: 4rem;
+  padding: 3rem 1rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.8rem;
+}
+
+.labelDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  border-radius: 0.8rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  color: #1d1d1d;
+  padding: .2rem;
+  
+}
+
+.input {
+  width: 80%;
+  margin: .5rem;
+  border: .1rem solid #1d1d1d;
+  outline: none;
+  border-radius: 0.6rem;
+  height: 2rem;
+  padding: .5rem;
+}
+
+.input:focus {
+  border: .2rem solid #4a154b;
+  padding: .4rem;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.sessionButton {
+  background-color: #4a154b;
+  color: white;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: .4rem;
+  margin-top: 1rem;
+}
+
+.alternateButton {
+  color: #1264a3;
+  align-self: center;
+  font-size: 1.6rem;
+  margin: 1rem;
+}

@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import styles from './session.module.scss';
 
 
-
-const SessionForm = ({ sessionAction, sessionCommand }) => {
+const SessionForm = ({ sessionAction, sessionCommand, updateSession }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div>
-      <form onSubmit={(e) => {e.preventDefault(); sessionAction({username, password})}}>
-        <label>Username
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        </label>
-        <label>Password
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </label>
-        <button>{sessionCommand}!</button>
+    <div className={styles.box}>
+      <form className={styles.form}>
+        <div className={styles.labelDiv}>
+          <label className={`${styles.label} ${styles.labelFirst}`}>USERNAME
+          </label>
+            <input className={styles.input} type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <label className={styles.label}>PASSWORD
+          </label>
+            <input className={styles.input} type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+        <div className={styles.buttonDiv}>
+          <button className={styles.sessionButton} onClick={(e) => {e.preventDefault(); sessionAction({username, password})}}>{sessionCommand}</button>
+          <button className={styles.alternateButton} onClick={updateSession}>{sessionCommand === 'SIGN UP' ? 'Log in' : 'Sign up'}</button>
+        </div>
       </form>
 
-      <Link to={sessionCommand === 'Sign up!' ? '/login' : '/signup'}>{sessionCommand === 'Sign up!' ? 'Log in' : 'Sign up'}</Link>
     </div>
   )
 }

@@ -7,12 +7,14 @@ const Room = (props) => {
   const [users, setUsers] = useState(false);
 
   useEffect(() => {
-    props.fetchMessagesForRoom(props.match.params.roomId);
-
-    props.fetchRoom(props.match.params.roomId)
-      .then(room => props.fetchUsers(room.users))
-      .then(() => setUsers(true));
-  }, []);
+    if (props.room) {
+      props.fetchMessagesForRoom(props.room.id);
+  
+      props.fetchRoom(props.room.id)
+        .then(room => props.fetchUsers(room.users))
+        .then(() => setUsers(true));
+    }
+  }, [props.room]);
 
   useEffect(() => {
     App.cable.subscriptions.create(
@@ -70,7 +72,9 @@ const Room = (props) => {
       </div>
     )
   } else {
-    return null;
+    return <div>
+      Welcome to Slack-Lite!
+    </div>;
   }
 }
 

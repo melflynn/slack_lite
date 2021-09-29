@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchRooms } from '../../actions/room_actions';
 import { logout } from '../../actions/session_actions';
 import { fetchUser } from '../../actions/user_actions';
-import RoomsIndex from './rooms';
+import RoomsIndex from './rooms_index';
 
 const mapStateToProps = (state) => ({
   rooms: Object.values(state.entities.rooms),
