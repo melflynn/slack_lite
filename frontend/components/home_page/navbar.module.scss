@@ -1,0 +1,15 @@
+@import '../../styles/styles.scss';
+
+.nav {
+  background-color: #4a154b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navLogo {
+  margin-left: 2rem;
+  height: 7.5rem;
+  width: 15rem;
+}

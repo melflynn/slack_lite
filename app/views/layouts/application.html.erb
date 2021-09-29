@@ -10,6 +10,11 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <script type="text/javascript">
+    window.inLogoWhite = "<%= image_url('barked-in-logo-white.png') %>";
+    window.slackLogo = "<%= image_url('slack_logo.png') %>"
+  </script>
+
   <body>
     <%= yield %>
   </body>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { LoginAuthRoute, LogoutAuthRoute } from '../util/route_util';
-import HomePage from './home_page';
+import HomePage from './home_page/home_page';
 import SignupContainer from './session_forms/signup_container';
 import LoginContainer from './session_forms/login_container';
 import RoomsContainer from './rooms/rooms_container';

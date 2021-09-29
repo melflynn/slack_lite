@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
+// import './styles/styles.scss'
 import { configureStore } from './store/store';
 import * as MessageUtil from './util/message_util';
 

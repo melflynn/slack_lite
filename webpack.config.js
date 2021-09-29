@@ -16,6 +16,10 @@ module.exports = {
           presets: ['@babel/env', '@babel/react']
         }
       },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader']
+      }
     ]
   },
   devtool: 'source-map',
