@@ -1,0 +1,14 @@
+
+.main {
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 1;
+}
+
+.indexSidebar {
+  grid-column: 1;
+}
+
+.room {
+  grid-column: 2;
+}

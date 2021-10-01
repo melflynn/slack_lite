@@ -3,7 +3,7 @@ import Main from './main';
 import { fetchRoom, fetchRooms } from '../../actions/room_actions';
 import { fetchUser, fetchUsers } from '../../actions/user_actions';
 import { logout } from '../../actions/session_actions';
-import { fetchMessagesForRoom } from '../../actions/message_actions';
+import { fetchMessagesForRoom, receiveMessage } from '../../actions/message_actions';
 
 const mapStateToProps = (state) => ({
   rooms: Object.values(state.entities.rooms),
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRoom: (roomId) => dispatch(fetchRoom(roomId)),
   fetchUsers: (userIds) => dispatch(fetchUsers(userIds)),
   fetchMessagesForRoom: (roomId) => dispatch(fetchMessagesForRoom(roomId)),
+  receiveMessage: (message) => dispatch(receiveMessage(message)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   logout: () => dispatch(logout())
 })

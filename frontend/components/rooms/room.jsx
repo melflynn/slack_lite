@@ -6,6 +6,7 @@ const Room = (props) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState(false);
 
+      
   useEffect(() => {
     if (props.room) {
       props.fetchMessagesForRoom(props.room.id);
@@ -17,19 +18,27 @@ const Room = (props) => {
   }, [props.room]);
 
   useEffect(() => {
-    App.cable.subscriptions.create(
-      { channel: "ChatChannel" },
-      {
-        received: data => {
-          // console.log(data);
-          setMessages(messages.concat(data))
-        },
-        speak: function(data) {
-          return this.perform("speak", data);
+    if (props.room) {
+      App.cable.subscriptions.create(
+        { channel: "ChatChannel", id: props.room.id },
+        {
+          received: data => {
+            // debugger;
+            props.receiveMessage(data);
+            // setMessages(messages.concat(data))
+          },
+          speak: function(data) {
+            // debugger;
+            return this.perform("speak", data);
+          }
         }
-      }
-    );
-  }, [messages]);
+      );
+    }
+
+    return () => {
+      App.cable.subscriptions.subscriptions.pop();
+    }
+  }, [props.room, messages]);
 
 
   if (users) {
@@ -60,8 +69,11 @@ const Room = (props) => {
   
         <form onSubmit={(e) => {
           e.preventDefault(); 
-          createMessage(props.match.params.roomId, {content: newMessage});
-          App.cable.subscriptions.subscriptions[0].speak({ user_id: props.currentUser.id, message: newMessage });
+          // createMessage(props.room.id, {content: newMessage});
+          const subs = App.cable.subscriptions.subscriptions[0]
+          subs.speak({ user_id: props.currentUser.id, room_id: props.room.id, content: newMessage });
+            // .filter(sub => JSON.parse(sub.identifier).id === props.room.id)
+            // .forEach(sub => sub.speak({ user_id: props.currentUser.id, room_id: props.room.id, content: newMessage }));
           setNewMessage("");
         }}>
           <label>

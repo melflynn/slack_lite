@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import RoomsIndex from './rooms_index';
 import Room from './room';
 
+import styles from './main.module.scss';
+
 const Main = (props) => {
   const [room, setRoom] = useState(null);
 
@@ -9,26 +11,31 @@ const Main = (props) => {
     setRoom(room);
   }
 
-  return <div>
-    <RoomsIndex 
-      rooms={props.rooms}
-      currentUserId={props.currentUserId}
-      fetchRooms={props.fetchRooms}
-      fetchUser={props.fetchUser}
-      logout={props.logout}
-      updateRoom={updateRoom}
-    />
+  return <div className={styles.main}>
+    <div className={styles.indexSidebar}>
+      <RoomsIndex 
+        rooms={props.rooms}
+        currentUserId={props.currentUserId}
+        fetchRooms={props.fetchRooms}
+        fetchUser={props.fetchUser}
+        logout={props.logout}
+        updateRoom={updateRoom}
+      />
+    </div>
 
-    <Room
-      room={room}
-      messages={props.messages}
-      users={props.users}
-      currentUser={props.currentUser}
-      fetchMessagesForRoom={props.fetchMessagesForRoom}
-      fetchRoom={props.fetchRoom}
-      fetchUsers={props.fetchUsers}
-      logout={props.logout}
-    />
+    <div className={styles.room}>
+      <Room
+        room={room}
+        messages={props.messages}
+        users={props.users}
+        currentUser={props.currentUser}
+        fetchMessagesForRoom={props.fetchMessagesForRoom}
+        fetchRoom={props.fetchRoom}
+        fetchUsers={props.fetchUsers}
+        receiveMessage={props.receiveMessage}
+        logout={props.logout}
+      />
+    </div>
 
   </div>
 }
