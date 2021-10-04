@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       login(@user)
       render '/api/users/show'
     else
-      render json: @user, status: 422
+      render json: {login: ["Incorrect username or password"]}, status: 422
     end
   end
 
