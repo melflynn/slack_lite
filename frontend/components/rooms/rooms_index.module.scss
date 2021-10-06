@@ -1,0 +1,14 @@
+.container {
+  background-color: rgb(48, 43, 43);
+  height: 100%;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 1.6rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  border-right: 0.1rem solid rgb(156, 149, 149);
+}
+
+.roomItem {
+  margin: 1rem;
+}

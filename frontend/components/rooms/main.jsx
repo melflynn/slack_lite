@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RoomsIndex from './rooms_index';
 import Room from './room';
+import NavbarContainer from '../home_page/navbar_container';
 
 import styles from './main.module.scss';
 
@@ -12,6 +13,7 @@ const Main = (props) => {
   }
 
   return <div className={styles.main}>
+    <NavbarContainer />
     <div className={styles.indexSidebar}>
       <RoomsIndex 
         rooms={props.rooms}
