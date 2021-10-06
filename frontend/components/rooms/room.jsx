@@ -7,12 +7,6 @@ const Room = (props) => {
   const [users, setUsers] = useState(false);
   const [formFocus, setFormFocus] = useState(false);
 
-  // const messagesEndRef = useRef(null)
-
-  // const scrollToBottom = () => {
-  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  // }
-
   useEffect(() => {
     if (props.room) {
       const chat = document.getElementsByClassName(styles.chat)[0];
@@ -48,6 +42,13 @@ const Room = (props) => {
     }
   }, [props.room]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    const subscription = App.cable.subscriptions.subscriptions[0]
+    subscription.speak({ user_id: props.currentUser.id, room_id: props.room.id, content: newMessage });
+    setNewMessage("");
+  }
+
 
   if (users) {
     return (
@@ -64,32 +65,28 @@ const Room = (props) => {
           ))}
         </ul>
   
-        <form className={`${styles.messageForm} ${formFocus ? styles.messageFormFocus : styles.messageFormUnfocus}`}
-          onSubmit={(e) => {
-                e.preventDefault(); 
-                const subscription = App.cable.subscriptions.subscriptions[0]
-                subscription.speak({ user_id: props.currentUser.id, room_id: props.room.id, content: newMessage });
-                setNewMessage("");
-                }}
-        >
+        <form className={`${styles.messageForm} ${formFocus ? styles.messageFormFocus : styles.messageFormUnfocus}`}>
           <label>
-            <input 
-              type="text" 
+            <textarea 
+              cols="30" rows="1"
               value={newMessage} 
               placeholder={`Message ${props.room.name}`}
               className={styles.input} 
               onFocus={() => setFormFocus(true)}
               onBlur={() => setFormFocus(false)}
-              onChange={(e) => setNewMessage(e.target.value)}/>
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyPress={(e) => {
+                // debugger;
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSubmit(e);
+                }
+              }}
+            ></textarea>
           </label>
           <div className={styles.messageOptions}>
               <i className={`fas fa-paper-plane ${newMessage.length > 0 ? styles.sendMessageGreen : styles.sendMessage}`}
-                onClick={(e) => {
-                e.preventDefault(); 
-                const subscription = App.cable.subscriptions.subscriptions[0]
-                subscription.speak({ user_id: props.currentUser.id, room_id: props.room.id, content: newMessage });
-                setNewMessage("");
-                }}>
+                onClick={handleSubmit}>
               </i>
           </div>
         </form>
