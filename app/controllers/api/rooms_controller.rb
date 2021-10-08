@@ -25,7 +25,7 @@ class Api::RoomsController < ApplicationController
       RoomUser.new({user_id: current_user.id, room_id: @room.id}).save
       render :show
     else
-      render json: @room.errors.full_messages, status: 422
+      render json: @room.errors.messages, status: 422
     end
 
   end

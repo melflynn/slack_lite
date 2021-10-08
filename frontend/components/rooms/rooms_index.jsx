@@ -18,6 +18,7 @@ const RoomsIndex = (props) => {
         </li>
       ))}
     </ul>
+    <button onClick={() => props.updateModal('CreateRoom')}>Add a Room</button>
   </div>
 }
 

@@ -4,6 +4,7 @@ import Room from './room';
 import NavbarContainer from '../home_page/navbar_container';
 
 import styles from './main.module.scss';
+import Modal from '../modal/modal';
 
 const Main = (props) => {
   const [room, setRoom] = useState(null);
@@ -13,6 +14,7 @@ const Main = (props) => {
   }
 
   return <div className={styles.main}>
+    {props.modal ? <Modal name={props.modal} updateModal={props.updateModal} createRoom={props.createRoom}/> : null }
     <NavbarContainer />
     <div className={styles.indexSidebar}>
       <RoomsIndex 
@@ -22,6 +24,7 @@ const Main = (props) => {
         fetchUser={props.fetchUser}
         logout={props.logout}
         updateRoom={updateRoom}
+        updateModal={props.updateModal}
       />
     </div>
 
